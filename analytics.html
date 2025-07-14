@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analytics | SariSariStore</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="analytics.css" />
+</head>
+<body>
+  <!-- Header / Navbar (optional simplified version) -->
+  <nav class="navbar navbar-light bg-primary mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" href="index.html">
+        <i class="bi bi-arrow-left-circle"></i> Back to Home
+      </a>
+      <span class="navbar-text text-light">Analytics Dashboard</span>
+    </div>
+  </nav>
+
+  <!-- Main Analytics Content -->
+  <div class="container">
+    <div class="row g-4 mb-4">
+      <!-- Daily Sales -->
+      <div class="col-md-4">
+        <div class="card text-white bg-success h-100">
+          <div class="card-body">
+            <h5 class="card-title">Daily Sales</h5>
+            <p class="card-text fs-4">₱3,200</p>
+            <p class="card-text"><small>Compared to ₱2,850 yesterday</small></p>
+          </div>
+        </div>
+      </div>
+      <!-- Weekly Sales -->
+      <div class="col-md-4">
+        <div class="card text-white bg-warning h-100">
+          <div class="card-body">
+            <h5 class="card-title">Weekly Sales</h5>
+            <p class="card-text fs-4">₱18,450</p>
+            <p class="card-text"><small>↑ 12% from last week</small></p>
+          </div>
+        </div>
+      </div>
+      <!-- Yearly Sales -->
+      <div class="col-md-4">
+        <div class="card text-white bg-info h-100">
+          <div class="card-body">
+            <h5 class="card-title">Yearly Sales</h5>
+            <p class="card-text fs-4">₱195,000</p>
+            <p class="card-text"><small>↑ 22% growth</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Products -->
+    <div class="row mb-4">
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Top-Selling Products</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between">Softdrinks <span class="badge bg-success">120 sold</span></li>
+            <li class="list-group-item d-flex justify-content-between">Taho <span class="badge bg-success">95 sold</span></li>
+            <li class="list-group-item d-flex justify-content-between">Instant Noodles <span class="badge bg-success">78 sold</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sales Chart Placeholder -->
+    <div class="row mb-4">
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Sales Over Time</h5>
+          </div>
+          <div class="card-body">
+            <p class="text-muted">[Chart will go here - use Chart.js or Google Charts]</p>
+            <div style="height: 250px; background-color: #f0f0f0; border-radius: 8px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Low Stock Alerts -->
+    <div class="row mb-5">
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-header bg-danger text-white">
+            <h5 class="mb-0">Inventory Alerts</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between">Vinegar <span class="badge bg-danger">Low</span></li>
+            <li class="list-group-item d-flex justify-content-between">Sugar <span class="badge bg-danger">Low</span></li>
+            <li class="list-group-item d-flex justify-content-between">Coffee <span class="badge bg-danger">Low</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
