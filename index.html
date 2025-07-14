@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <title>SariSariStore</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="img/logo.jpg" alt="Logo" width="60" height="54" style="border-radius: 40px;" />
+        <span class="ms-2 fs-4 text-light">SariSari</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link text-light" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-light" href="#features">Features</a></li>
+        <li class="nav-item"><a class="nav-link text-light" href="#pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link text-light" href="#analytics">Analytics</a></li> <!-- New Item -->
+        <li class="nav-item"><a class="nav-link text-light" href="#inventory">Inventory</a></li> <!-- Optional -->
+      </ul>
+      </div>
+      <div class="Elements d-flex gap-3 p-3" id="NavElements">
+        <a href="#login" class="text-decoration-none text-light">
+          <i class="bi bi-person"></i> Login
+        </a>
+        <a href="#cart" class="text-decoration-none text-light position-relative">
+          <i class="bi bi-cart"></i> Cart
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+        </a>
+        <a href="#search" class="text-decoration-none text-light">
+          <i class="bi bi-search"></i> Search
+        </a>
+        <a href="#scan" class="text-decoration-none text-light">
+          <i class="bi bi-upc-scan"></i> Scan
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="hero-text">
+      <h5>For Every Sari-Sari Store</h5>
+      <h1>Smart POS. Fast Sales. Easy Life.</h1>
+      <p>Manage your tindahan from your phone or computer — scan, sell, and track without the hassle.</p>
+      <button class="btn btn-custom">Use Now</button>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+<section class="features-section py-5">
+  <div class="container text-center">
+    <h2 class="mb-4">Why Choose Our POS System?</h2>
+    <p class="mb-5 text-muted">Everything you need to run your sari-sari store — faster, easier, smarter.</p>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-box p-4 shadow-sm rounded bg-white h-100">
+          <i class="bi bi-upc-scan fs-1 text-primary mb-3"></i>
+          <h5>Barcode Scanning</h5>
+          <p>Use your phone camera or scanner to instantly add items. No manual typing!</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-box p-4 shadow-sm rounded bg-white h-100">
+          <i class="bi bi-phone fs-1 text-success mb-3"></i>
+          <h5>Mobile & Desktop Ready</h5>
+          <p>Access your system anytime, anywhere — perfect for on-the-go selling.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-box p-4 shadow-sm rounded bg-white h-100">
+          <i class="bi bi-graph-up-arrow fs-1 text-warning mb-3"></i>
+          <h5>Sales Tracking</h5>
+          <p>Track daily sales, inventory, and trends with simple dashboards and reports.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

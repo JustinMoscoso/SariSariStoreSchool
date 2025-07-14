@@ -1,0 +1,96 @@
+/* General Reset */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('img/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Navbar Center Nav Links */
+#navbarNav {
+  display: flex;
+  justify-content: center;
+}
+
+/* Login/Signup Buttons (optional styling) */
+#loginButton,
+#signupButton {
+  font-size: 1rem;
+  padding: 10px 20px;
+  width: 120px;
+  height: 45px;
+  border-radius: 20px;
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: right;
+  min-height: 100vh;
+  padding: 0 10vh 20px 10vh;
+  width: 100%;
+}
+
+/* Hero Text Box */
+.hero-text {
+  background-color: #fff8e1;
+  padding: 40px;
+  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Text Styles */
+.hero-text h5 {
+  font-size: 14px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.hero-text h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #00a6ff;
+  margin-bottom: 15px;
+}
+
+/* Hero Button */
+.hero-text .btn-custom {
+  background-color: #00a6ff;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: 0.3s ease;
+  border: none;
+}
+
+.hero-text .btn-custom:hover {
+  background-color: rgb(0, 81, 244);
+}
+
+.features-section {
+    background-color: #f0f8ff;
+}
+
+.feature-box i {
+    color: #00a6ff;
+}
+
+.feature-box h5 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.feature-box p {
+    color: #555;
+    font-size: 14px;
+}
+
