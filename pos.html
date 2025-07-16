@@ -1,107 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>POS System | SariSariStore</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-    .table td, .table th {
-      vertical-align: middle;
-    }
-    .cart-summary {
-      background: #fff;
-      border: 1px solid #dee2e6;
-      padding: 15px;
-      border-radius: 5px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point of Sale | SariSariStore</title>
+    <meta name="description" content="Modern POS system for SariSari Store - Process sales, manage inventory, and track transactions">
+    <link rel="stylesheet" href="pos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-back">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+            <h1 class="nav-title">Point of Sale</h1>
+            <div class="nav-actions">
+                <button class="btn-ghost" id="historyBtn">
+                    <i class="fas fa-history"></i>
+                    History
+                </button>
+                <button class="btn-outline" id="settingsBtn">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </button>
+            </div>
+        </div>
+    </nav>
 
-<!-- Navbar -->
-<nav class="navbar navbar-light bg-primary mb-4">
-  <div class="container-fluid">
-    <a class="navbar-brand text-light" href="index.html">
-      <i class="bi bi-arrow-left-circle"></i> Back to Home
-    </a>
-    <span class="navbar-text text-light">Point of Sale</span>
-  </div>
-</nav>
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="pos-layout">
+            <!-- Left Panel - Products -->
+            <div class="products-panel">
+                <!-- Search and Controls -->
+                <div class="panel-header">
+                    <div class="search-section">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="productSearch" placeholder="Search products...">
+                        </div>
+                        <button class="btn-scan" id="scanBtn">
+                            <i class="fas fa-qrcode"></i>
+                            Scan
+                        </button>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <select id="categoryFilter" class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="beverage">Beverage</option>
+                            <option value="food">Food</option>
+                            <option value="snacks">Snacks</option>
+                            <option value="household">Household</option>
+                        </select>
+                        <button class="btn-secondary" id="addProductBtn">
+                            <i class="fas fa-plus"></i>
+                            Add Product
+                        </button>
+                    </div>
+                </div>
 
-<!-- POS Table -->
-<div class="container mb-5">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h4>Product List</h4>
-    <button class="btn btn-outline-secondary">
-      <i class="bi bi-upc-scan"></i> Scan Item
-    </button>
-  </div>
+                <!-- Products Grid -->
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be populated by JavaScript -->
+                </div>
 
-  <div class="table-responsive mb-4">
-    <table class="table table-bordered table-hover">
-      <thead class="table-light">
-        <tr>
-          <th>Product</th>
-          <th>Category</th>
-          <th>Price (₱)</th>
-          <th>Quantity</th>
-          <th>Add</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Softdrinks</td>
-          <td>Beverage</td>
-          <td>15</td>
-          <td><input type="number" class="form-control" value="1" min="1" style="width: 80px;"></td>
-          <td><button class="btn btn-success"><i class="bi bi-cart-plus"></i></button></td>
-        </tr>
-        <tr>
-          <td>Instant Noodles</td>
-          <td>Food</td>
-          <td>10</td>
-          <td><input type="number" class="form-control" value="1" min="1" style="width: 80px;"></td>
-          <td><button class="btn btn-success"><i class="bi bi-cart-plus"></i></button></td>
-        </tr>
-        <tr>
-          <td>Coffee</td>
-          <td>Beverage</td>
-          <td>12</td>
-          <td><input type="number" class="form-control" value="1" min="1" style="width: 80px;"></td>
-          <td><button class="btn btn-success"><i class="bi bi-cart-plus"></i></button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <button class="quick-action-btn" id="lowStockBtn">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Low Stock</span>
+                        <div class="badge">3</div>
+                    </button>
+                    <button class="quick-action-btn" id="favoritesBtn">
+                        <i class="fas fa-star"></i>
+                        <span>Favorites</span>
+                    </button>
+                    <button class="quick-action-btn" id="recentBtn">
+                        <i class="fas fa-clock"></i>
+                        <span>Recent</span>
+                    </button>
+                </div>
+            </div>
 
-  <!-- Cart Summary -->
-  <div class="cart-summary">
-    <h5><i class="bi bi-basket"></i> Cart</h5>
-    <ul class="list-group mb-3">
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        Softdrinks x2
-        <span>₱30</span>
-      </li>
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        Coffee x1
-        <span>₱12</span>
-      </li>
-    </ul>
-    <div class="d-flex justify-content-between fw-bold mb-2">
-      <span>Total:</span>
-      <span>₱42</span>
+            <!-- Right Panel - Cart & Checkout -->
+            <div class="cart-panel">
+                <!-- Cart Header -->
+                <div class="cart-header">
+                    <h3>
+                        <i class="fas fa-shopping-cart"></i>
+                        Current Sale
+                    </h3>
+                    <div class="cart-actions">
+                        <button class="btn-ghost btn-sm" id="clearCartBtn">
+                            <i class="fas fa-trash"></i>
+                            Clear
+                        </button>
+                        <button class="btn-ghost btn-sm" id="holdSaleBtn">
+                            <i class="fas fa-pause"></i>
+                            Hold
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cart Items -->
+                <div class="cart-items" id="cartItems">
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>No items in cart</p>
+                        <span>Scan or select products to add them here</span>
+                    </div>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">₱0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (12%):</span>
+                        <span id="tax">₱0.00</span>
+                    </div>
+                    <div class="summary-row discount-row" id="discountRow" style="display: none;">
+                        <span>Discount:</span>
+                        <span id="discount">-₱0.00</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span>Total:</span>
+                        <span id="total">₱0.00</span>
+                    </div>
+                </div>
+
+                <!-- Payment Section -->
+                <div class="payment-section">
+                    <div class="payment-methods">
+                        <button class="payment-method active" data-method="cash">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>Cash</span>
+                        </button>
+                        <button class="payment-method" data-method="card">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Card</span>
+                        </button>
+                        <button class="payment-method" data-method="gcash">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>GCash</span>
+                        </button>
+                    </div>
+
+                    <div class="payment-input" id="cashPayment">
+                        <label for="amountReceived">Amount Received:</label>
+                        <div class="amount-input">
+                            <span class="currency">₱</span>
+                            <input type="number" id="amountReceived" placeholder="0.00" step="0.01" min="0">
+                        </div>
+                        <div class="change-display" id="changeDisplay" style="display: none;">
+                            <span>Change: </span>
+                            <span id="changeAmount">₱0.00</span>
+                        </div>
+                    </div>
+
+                    <div class="quick-amounts">
+                        <button class="quick-amount" data-amount="20">₱20</button>
+                        <button class="quick-amount" data-amount="50">₱50</button>
+                        <button class="quick-amount" data-amount="100">₱100</button>
+                        <button class="quick-amount" data-amount="200">₱200</button>
+                        <button class="quick-amount" data-amount="500">₱500</button>
+                        <button class="quick-amount" id="exactAmount">Exact</button>
+                    </div>
+
+                    <button class="btn-checkout" id="checkoutBtn" disabled>
+                        <i class="fas fa-cash-register"></i>
+                        Complete Sale
+                    </button>
+                </div>
+
+                <!-- Customer Info -->
+                <div class="customer-section">
+                    <button class="btn-ghost" id="addCustomerBtn">
+                        <i class="fas fa-user-plus"></i>
+                        Add Customer
+                    </button>
+                    <button class="btn-ghost" id="addDiscountBtn">
+                        <i class="fas fa-percent"></i>
+                        Add Discount
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-    <button class="btn btn-primary w-100">
-      <i class="bi bi-cash-coin"></i> Complete Purchase
-    </button>
-  </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Add Product Modal -->
+    <div class="modal-overlay" id="addProductModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Add New Product</h2>
+                <button class="modal-close" id="addProductClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <form id="addProductForm" class="product-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="newProductName">Product Name *</label>
+                            <input type="text" id="newProductName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newProductCategory">Category *</label>
+                            <select id="newProductCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="beverage">Beverage</option>
+                                <option value="food">Food</option>
+                                <option value="snacks">Snacks</option>
+                                <option value="household">Household</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="newProductPrice">Price (₱) *</label>
+                            <input type="number" id="newProductPrice" step="0.01" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newProductStock">Stock Quantity *</label>
+                            <input type="number" id="newProductStock" min="0" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="newProductBarcode">Barcode</label>
+                        <div class="input-group">
+                            <input type="text" id="newProductBarcode" placeholder="Scan or enter barcode">
+                            <button type="button" class="btn-secondary" id="scanNewBarcode">
+                                <i class="fas fa-qrcode"></i>
+                                Scan
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelAddProduct">Cancel</button>
+                        <button type="submit" class="btn-primary">Add Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Receipt Modal -->
+    <div class="modal-overlay" id="receiptModal">
+        <div class="modal receipt-modal">
+            <div class="modal-header">
+                <h2>Transaction Complete</h2>
+                <button class="modal-close" id="receiptClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="receipt" id="receipt">
+                    <!-- Receipt content will be generated by JavaScript -->
+                </div>
+                <div class="receipt-actions">
+                    <button class="btn-secondary" id="printReceiptBtn">
+                        <i class="fas fa-print"></i>
+                        Print Receipt
+                    </button>
+                    <button class="btn-primary" id="newSaleBtn">
+                        <i class="fas fa-plus"></i>
+                        New Sale
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Discount Modal -->
+    <div class="modal-overlay" id="discountModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Apply Discount</h2>
+                <button class="modal-close" id="discountClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="discount-options">
+                    <div class="discount-type">
+                        <label class="radio-label">
+                            <input type="radio" name="discountType" value="percentage" checked>
+                            <span>Percentage (%)</span>
+                        </label>
+                        <input type="number" id="percentageDiscount" min="0" max="100" placeholder="0">
+                    </div>
+                    <div class="discount-type">
+                        <label class="radio-label">
+                            <input type="radio" name="discountType" value="fixed">
+                            <span>Fixed Amount (₱)</span>
+                        </label>
+                        <input type="number" id="fixedDiscount" min="0" step="0.01" placeholder="0.00">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelDiscount">Cancel</button>
+                    <button type="button" class="btn-primary" id="applyDiscount">Apply Discount</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scanner Modal -->
+    <div class="modal-overlay" id="scannerModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Barcode Scanner</h2>
+                <button class="modal-close" id="scannerClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="scanner-container">
+                    <div class="scanner-placeholder">
+                        <i class="fas fa-qrcode"></i>
+                        <p>Camera scanner would appear here</p>
+                        <span>Point camera at barcode to scan</span>
+                    </div>
+                    <div class="manual-entry">
+                        <label for="manualBarcode">Or enter barcode manually:</label>
+                        <div class="input-group">
+                            <input type="text" id="manualBarcode" placeholder="Enter barcode">
+                            <button class="btn-primary" id="searchBarcode">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Processing transaction...</p>
+        </div>
+    </div>
+
+    <script src="pos.js"></script>
 </body>
 </html>
