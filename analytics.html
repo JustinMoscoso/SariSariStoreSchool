@@ -1,107 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Analytics | SariSariStore</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="analytics.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard | SariSariStore</title>
+    <meta name="description" content="Analytics dashboard for SariSari Store - Track sales, inventory, and business insights">
+    <link rel="stylesheet" href="analytics.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <!-- Header / Navbar (optional simplified version) -->
-  <nav class="navbar navbar-light bg-primary mb-4">
-    <div class="container-fluid">
-      <a class="navbar-brand text-light" href="index.html">
-        <i class="bi bi-arrow-left-circle"></i> Back to Home
-      </a>
-      <span class="navbar-text text-light">Analytics Dashboard</span>
-    </div>
-  </nav>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-back">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+            <h1 class="nav-title">Analytics Dashboard</h1>
+            <div class="nav-actions">
+                <button class="btn-ghost" id="refreshBtn">
+                    <i class="fas fa-sync-alt"></i>
+                    Refresh
+                </button>
+                <button class="btn-outline" id="exportBtn">
+                    <i class="fas fa-download"></i>
+                    Export
+                </button>
+            </div>
+        </div>
+    </nav>
 
-  <!-- Main Analytics Content -->
-  <div class="container">
-    <div class="row g-4 mb-4">
-      <!-- Daily Sales -->
-      <div class="col-md-4">
-        <div class="card text-white bg-success h-100">
-          <div class="card-body">
-            <h5 class="card-title">Daily Sales</h5>
-            <p class="card-text fs-4">₱3,200</p>
-            <p class="card-text"><small>Compared to ₱2,850 yesterday</small></p>
-          </div>
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Date Range Selector -->
+        <div class="date-selector">
+            <div class="date-tabs">
+                <button class="date-tab active" data-period="today">Today</button>
+                <button class="date-tab" data-period="week">This Week</button>
+                <button class="date-tab" data-period="month">This Month</button>
+                <button class="date-tab" data-period="year">This Year</button>
+            </div>
+            <div class="date-range">
+                <input type="date" id="startDate" class="date-input">
+                <span>to</span>
+                <input type="date" id="endDate" class="date-input">
+                <button class="btn-primary" id="applyDateRange">Apply</button>
+            </div>
         </div>
-      </div>
-      <!-- Weekly Sales -->
-      <div class="col-md-4">
-        <div class="card text-white bg-warning h-100">
-          <div class="card-body">
-            <h5 class="card-title">Weekly Sales</h5>
-            <p class="card-text fs-4">₱18,450</p>
-            <p class="card-text"><small>↑ 12% from last week</small></p>
-          </div>
+
+        <!-- Key Metrics Cards -->
+        <div class="metrics-grid">
+            <div class="metric-card success" id="dailySales">
+                <div class="metric-icon">
+                    <i class="fas fa-peso-sign"></i>
+                </div>
+                <div class="metric-content">
+                    <h3>Daily Sales</h3>
+                    <div class="metric-value">₱3,200</div>
+                    <div class="metric-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        +12.3% from yesterday
+                    </div>
+                </div>
+                <div class="metric-chart">
+                    <canvas id="dailyChart" width="100" height="40"></canvas>
+                </div>
+            </div>
+
+            <div class="metric-card warning" id="weeklySales">
+                <div class="metric-icon">
+                    <i class="fas fa-calendar-week"></i>
+                </div>
+                <div class="metric-content">
+                    <h3>Weekly Sales</h3>
+                    <div class="metric-value">₱18,450</div>
+                    <div class="metric-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        +8.7% from last week
+                    </div>
+                </div>
+                <div class="metric-chart">
+                    <canvas id="weeklyChart" width="100" height="40"></canvas>
+                </div>
+            </div>
+
+            <div class="metric-card info" id="monthlySales">
+                <div class="metric-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="metric-content">
+                    <h3>Monthly Sales</h3>
+                    <div class="metric-value">₱78,900</div>
+                    <div class="metric-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        +15.2% from last month
+                    </div>
+                </div>
+                <div class="metric-chart">
+                    <canvas id="monthlyChart" width="100" height="40"></canvas>
+                </div>
+            </div>
+
+            <div class="metric-card primary" id="totalTransactions">
+                <div class="metric-icon">
+                    <i class="fas fa-receipt"></i>
+                </div>
+                <div class="metric-content">
+                    <h3>Transactions</h3>
+                    <div class="metric-value">1,247</div>
+                    <div class="metric-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        +5.4% this month
+                    </div>
+                </div>
+                <div class="metric-chart">
+                    <canvas id="transactionChart" width="100" height="40"></canvas>
+                </div>
+            </div>
         </div>
-      </div>
-      <!-- Yearly Sales -->
-      <div class="col-md-4">
-        <div class="card text-white bg-info h-100">
-          <div class="card-body">
-            <h5 class="card-title">Yearly Sales</h5>
-            <p class="card-text fs-4">₱195,000</p>
-            <p class="card-text"><small>↑ 22% growth</small></p>
-          </div>
+
+        <!-- Charts Section -->
+        <div class="charts-grid">
+            <!-- Sales Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Sales Overview</h3>
+                    <div class="chart-controls">
+                        <select id="salesChartType" class="chart-select">
+                            <option value="line">Line Chart</option>
+                            <option value="bar">Bar Chart</option>
+                            <option value="area">Area Chart</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="salesChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Product Performance -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Product Performance</h3>
+                    <div class="chart-controls">
+                        <button class="btn-ghost active" data-metric="sales">Sales</button>
+                        <button class="btn-ghost" data-metric="quantity">Quantity</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="productChart"></canvas>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <!-- Data Tables Section -->
+        <div class="tables-grid">
+            <!-- Top Products -->
+            <div class="table-card">
+                <div class="table-header">
+                    <h3>Top-Selling Products</h3>
+                    <button class="btn-ghost" id="viewAllProducts">
+                        View All <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Sold</th>
+                                <th>Revenue</th>
+                                <th>Trend</th>
+                            </tr>
+                        </thead>
+                        <tbody id="topProductsTable">
+                            <tr>
+                                <td>
+                                    <div class="product-info">
+                                        <div class="product-avatar">🥤</div>
+                                        <span>Soft Drinks</span>
+                                    </div>
+                                </td>
+                                <td><span class="quantity-badge">120</span></td>
+                                <td><strong>₱2,400</strong></td>
+                                <td><span class="trend-indicator positive">+12%</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="product-info">
+                                        <div class="product-avatar">🍜</div>
+                                        <span>Instant Noodles</span>
+                                    </div>
+                                </td>
+                                <td><span class="quantity-badge">95</span></td>
+                                <td><strong>₱1,425</strong></td>
+                                <td><span class="trend-indicator positive">+8%</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="product-info">
+                                        <div class="product-avatar">🍞</div>
+                                        <span>Bread</span>
+                                    </div>
+                                </td>
+                                <td><span class="quantity-badge">78</span></td>
+                                <td><strong>₱936</strong></td>
+                                <td><span class="trend-indicator positive">+5%</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="product-info">
+                                        <div class="product-avatar">☕</div>
+                                        <span>Coffee</span>
+                                    </div>
+                                </td>
+                                <td><span class="quantity-badge">65</span></td>
+                                <td><strong>₱780</strong></td>
+                                <td><span class="trend-indicator negative">-3%</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="product-info">
+                                        <div class="product-avatar">🍚</div>
+                                        <span>Rice</span>
+                                    </div>
+                                </td>
+                                <td><span class="quantity-badge">45</span></td>
+                                <td><strong>₱2,250</strong></td>
+                                <td><span class="trend-indicator positive">+15%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Inventory Alerts -->
+            <div class="table-card alert-card">
+                <div class="table-header">
+                    <h3>
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Inventory Alerts
+                    </h3>
+                    <span class="alert-count">3 items need attention</span>
+                </div>
+                <div class="alert-list">
+                    <div class="alert-item critical">
+                        <div class="alert-icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="alert-content">
+                            <h4>Vinegar</h4>
+                            <p>Only 2 bottles left</p>
+                        </div>
+                        <div class="alert-actions">
+                            <button class="btn-danger btn-sm">Reorder</button>
+                        </div>
+                    </div>
+                    <div class="alert-item warning">
+                        <div class="alert-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="alert-content">
+                            <h4>Sugar</h4>
+                            <p>5 packs remaining</p>
+                        </div>
+                        <div class="alert-actions">
+                            <button class="btn-warning btn-sm">Reorder</button>
+                        </div>
+                    </div>
+                    <div class="alert-item warning">
+                        <div class="alert-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="alert-content">
+                            <h4>Coffee</h4>
+                            <p>8 sachets left</p>
+                        </div>
+                        <div class="alert-actions">
+                            <button class="btn-warning btn-sm">Reorder</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Insights -->
+        <div class="insights-grid">
+            <div class="insight-card">
+                <div class="insight-header">
+                    <h3>Peak Hours</h3>
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="insight-content">
+                    <div class="peak-time">
+                        <span class="time">7:00 AM - 9:00 AM</span>
+                        <span class="percentage">32% of daily sales</span>
+                    </div>
+                    <div class="peak-time">
+                        <span class="time">5:00 PM - 7:00 PM</span>
+                        <span class="percentage">28% of daily sales</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-card">
+                <div class="insight-header">
+                    <h3>Customer Insights</h3>
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="insight-content">
+                    <div class="insight-stat">
+                        <span class="stat-label">Avg. Transaction</span>
+                        <span class="stat-value">₱45.60</span>
+                    </div>
+                    <div class="insight-stat">
+                        <span class="stat-label">Returning Customers</span>
+                        <span class="stat-value">68%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-card">
+                <div class="insight-header">
+                    <h3>Profit Margin</h3>
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <div class="insight-content">
+                    <div class="profit-circle">
+                        <canvas id="profitChart" width="80" height="80"></canvas>
+                        <div class="profit-text">
+                            <span class="profit-percentage">24.5%</span>
+                            <span class="profit-label">Avg. Margin</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Top Products -->
-    <div class="row mb-4">
-      <div class="col">
-        <div class="card h-100">
-          <div class="card-header bg-light">
-            <h5 class="mb-0">Top-Selling Products</h5>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex justify-content-between">Softdrinks <span class="badge bg-success">120 sold</span></li>
-            <li class="list-group-item d-flex justify-content-between">Taho <span class="badge bg-success">95 sold</span></li>
-            <li class="list-group-item d-flex justify-content-between">Instant Noodles <span class="badge bg-success">78 sold</span></li>
-          </ul>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading analytics...</p>
         </div>
-      </div>
     </div>
 
-    <!-- Sales Chart Placeholder -->
-    <div class="row mb-4">
-      <div class="col">
-        <div class="card h-100">
-          <div class="card-header bg-light">
-            <h5 class="mb-0">Sales Over Time</h5>
-          </div>
-          <div class="card-body">
-            <p class="text-muted">[Chart will go here - use Chart.js or Google Charts]</p>
-            <div style="height: 250px; background-color: #f0f0f0; border-radius: 8px;"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Low Stock Alerts -->
-    <div class="row mb-5">
-      <div class="col">
-        <div class="card h-100">
-          <div class="card-header bg-danger text-white">
-            <h5 class="mb-0">Inventory Alerts</h5>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex justify-content-between">Vinegar <span class="badge bg-danger">Low</span></li>
-            <li class="list-group-item d-flex justify-content-between">Sugar <span class="badge bg-danger">Low</span></li>
-            <li class="list-group-item d-flex justify-content-between">Coffee <span class="badge bg-danger">Low</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="analytics.js"></script>
 </body>
 </html>

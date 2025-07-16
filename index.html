@@ -1,159 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="style.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-  <title>SariSariStore</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SariSari Store - Smart POS System</title>
+    <meta name="description" content="Smart POS system for Filipino sari-sari stores. Scan, sell, and track without the hassle.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-    <div class="container-fluid">
-      <a class="navbar-brand d-flex align-items-center" href="#">
-        <img src="img/logo.jpg" alt="Logo" width="50" height="50" class="rounded-circle" />
-        <span class="ms-2 fs-4 text-light">SariSari</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link text-light" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link text-light" href="#features">Features</a></li>
-          <li class="nav-item"><a class="nav-link text-light" href="pricing.html">Pricing</a></li>
-          <li class="nav-item"><a class="nav-link text-light" href="analytics.html">Analytics</a></li>
-          <li class="nav-item"><a class="nav-link text-light" href="inventory.html">Inventory</a></li>
-        </ul>
-        <div class="d-flex gap-3 mt-3 mt-lg-0">
-          <a href="#" class="text-decoration-none text-light" data-bs-toggle="modal" data-bs-target="#authModal">
-  <i class="bi bi-person"></i> Login / Sign Up</a>
-          <a href="pos.html" class="text-decoration-none text-light"><i class="bi bi-upc-scan"></i> Scan</a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <div class="hero-section d-flex align-items-center justify-content-center text-center text-md-start px-3 px-md-5 py-5">
-    <div class="hero-text">
-      <h5>For Every Sari-Sari Store</h5>
-      <h1>Smart POS. Fast Sales. Easy Life.</h1>
-      <p>Manage your tindahan from your phone or computer — scan, sell, and track without the hassle.</p>
-      <button class="btn btn-custom mt-2">Use Now</button>
-    </div>
-  </div>
-
-  <!-- Features Section -->
-  <section class="features-section py-5" id="features">
-    <div class="container text-center">
-      <h2 class="mb-4">Why Choose Our POS System?</h2>
-      <p class="mb-5 text-muted">Everything you need to run your sari-sari store — faster, easier, smarter.</p>
-      <div class="row g-4">
-        <div class="col-sm-12 col-md-4">
-          <div class="feature-box p-4 shadow-sm rounded bg-white h-100">
-            <i class="bi bi-upc-scan fs-1 text-primary mb-3"></i>
-            <h5>Barcode Scanning</h5>
-            <p>Use your phone camera or scanner to instantly add items. No manual typing!</p>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-4">
-          <div class="feature-box p-4 shadow-sm rounded bg-white h-100">
-            <i class="bi bi-phone fs-1 text-success mb-3"></i>
-            <h5>Mobile & Desktop Ready</h5>
-            <p>Access your system anytime, anywhere — perfect for on-the-go selling.</p>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-4">
-          <div class="feature-box p-4 shadow-sm rounded bg-white h-100">
-            <i class="bi bi-graph-up-arrow fs-1 text-warning mb-3"></i>
-            <h5>Sales Tracking</h5>
-            <p>Track daily sales, inventory, and trends with simple dashboards and reports.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-<!-- Login / Signup Modal -->
-<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content p-4">
-      <div class="modal-header border-0 pb-0">
-        <div class="w-100 text-center">
-          <img src="img/logo.jpg" alt="Logo" class="rounded-circle mb-2" style="width: 60px; height: 60px;" />
-          <h5 class="modal-title mt-2" id="authModalLabel">Welcome to SariSariStore</h5>
-        </div>
-        <button type="button" class="btn-close position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <ul class="nav nav-tabs justify-content-center mt-3" id="authTabs" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#loginTab" type="button" role="tab">Login</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signupTab" type="button" role="tab">Sign Up</button>
-        </li>
-      </ul>
-      <div class="tab-content pt-3" id="authTabsContent">
-        <!-- Login Form -->
-        <div class="tab-pane fade show active" id="loginTab" role="tabpanel">
-          <form id="loginForm">
-            <div class="mb-3">
-              <label for="loginEmail" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email" required>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-circle">
+                    <span>SS</span>
+                </div>
+                <span class="logo-text">SariSari</span>
             </div>
-            <div class="mb-3">
-              <label for="loginPassword" class="form-label">Password</label>
-              <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
+
+            <!-- Desktop Navigation -->
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="analytics.html" class="nav-link">Analytics</a></li>
+                <li><a href="inventory.html" class="nav-link">Inventory</a></li>
+            </ul>
+
+            <!-- Desktop Actions -->
+            <div class="nav-actions">
+                <button class="btn-ghost" id="authBtn">
+                    <i class="fas fa-user"></i>
+                    Login / Sign Up
+                </button>
+                <button class="btn-outline">
+                    <i class="fas fa-qrcode"></i>
+                    Scan
+                </button>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Login</button>
-            <hr class="my-3">
-            <button type="button" class="btn btn-outline-dark w-100 mb-2" id="googleLogin">
-            <i class="bi bi-google me-2"></i> Continue with Google
-            </button>
-            <button type="button" class="btn btn-outline-primary w-100" id="facebookLogin">
-            <i class="bi bi-facebook me-2"></i> Continue with Facebook
-            </button>
-            </button>
-          </form>
+
+            <!-- Mobile Menu Button -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
 
-        <!-- Signup Form -->
-        <div class="tab-pane fade" id="signupTab" role="tabpanel">
-          <form id="signupForm">
-            <div class="mb-3">
-              <label for="signupName" class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="signupName" placeholder="Your full name" required>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#" class="mobile-link">Home</a>
+            <a href="#features" class="mobile-link">Features</a>
+            <a href="pricing.html" class="mobile-link">Pricing</a>
+            <a href="analytics.html" class="mobile-link">Analytics</a>
+            <a href="inventory.html" class="mobile-link">Inventory</a>
+            <div class="mobile-actions">
+                <button class="btn-ghost mobile-auth">
+                    <i class="fas fa-user"></i>
+                    Login / Sign Up
+                </button>
+                <button class="btn-outline">
+                    <i class="fas fa-qrcode"></i>
+                    Scan
+                </button>
             </div>
-            <div class="mb-3">
-              <label for="signupEmail" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="signupEmail" placeholder="Enter your email" required>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-decoration hero-decoration-1"></div>
+        <div class="hero-decoration hero-decoration-2"></div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">For Every Sari-Sari Store</div>
+                <h1 class="hero-title">
+                    Smart POS. <span class="text-blue">Fast Sales.</span>
+                    <span class="text-green">Easy Life.</span>
+                </h1>
+                <p class="hero-description">
+                    Manage your tindahan from your phone or computer — scan, sell, and track without the hassle. 
+                    Everything you need to run your sari-sari store smarter.
+                </p>
+                
+                <div class="hero-buttons">
+                    <button class="btn-primary" id="getStartedBtn">
+                        Get Started Free
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn-secondary">
+                        <i class="fas fa-play"></i>
+                        Watch Demo
+                    </button>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Active Stores</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support</div>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
-              <label for="signupPassword" class="form-label">Password</label>
-              <input type="password" class="form-control" id="signupPassword" placeholder="Create a password" required>
+
+            <div class="hero-visual">
+                <div class="dashboard-card">
+                    <div class="dashboard-header">
+                        <h3>Today's Sales</h3>
+                        <span class="badge-success">+12%</span>
+                    </div>
+                    <div class="dashboard-amount">₱2,450.00</div>
+                    <div class="dashboard-stats">
+                        <div class="dashboard-stat">
+                            <span>Transactions</span>
+                            <span>45</span>
+                        </div>
+                        <div class="dashboard-stat">
+                            <span>Items Sold</span>
+                            <span>127</span>
+                        </div>
+                        <div class="dashboard-stat">
+                            <span>Top Item</span>
+                            <span>Soft Drinks</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Create Account</button>
-            <hr class="my-3">
-            <button type="button" class="btn btn-outline-dark w-100 mb-2" id="googleLogin">
-            <i class="bi bi-google me-2"></i> Continue with Google
-            </button>
-            <button type="button" class="btn btn-outline-primary w-100" id="facebookLogin">
-            <i class="bi bi-facebook me-2"></i> Continue with Facebook
-            </button>
-            </button>
-          </form>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="features-header">
+                <h2>Why Choose Our POS System?</h2>
+                <p>Everything you need to run your sari-sari store — faster, easier, smarter. Built specifically for Filipino entrepreneurs.</p>
             </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon blue">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <h3>Barcode Scanning</h3>
+                    <p>Use your phone camera or scanner to instantly add items. No manual typing required!</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon green">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile & Desktop Ready</h3>
+                    <p>Access your system anytime, anywhere — perfect for on-the-go selling and management.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon purple">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Sales Analytics</h3>
+                    <p>Track daily sales, inventory, and trends with simple dashboards and detailed reports.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon red">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure & Reliable</h3>
+                    <p>Your data is protected with enterprise-grade security and automatic backups.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon orange">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Real-time Updates</h3>
+                    <p>Inventory and sales data sync instantly across all your devices in real-time.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon indigo">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Multi-user Support</h3>
+                    <p>Add family members or employees with different access levels and permissions.</p>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="features-cta">
+                <h3>Ready to Transform Your Store?</h3>
+                <p>Join thousands of sari-sari store owners who have already upgraded their business.</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary">Start Free Trial</button>
+                    <button class="btn-secondary">Schedule Demo</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-logo">
+                    <div class="logo-circle large">
+                        <span>SS</span>
+                    </div>
+                    <h2>Welcome to SariSari</h2>
+                </div>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="signup">Sign Up</button>
+            </div>
+
+            <div class="modal-content">
+                <!-- Login Form -->
+                <div class="tab-content active" id="login">
+                    <form class="auth-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Email address</label>
+                            <div class="input-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                                <button type="button" class="password-toggle" data-target="loginPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary full-width">Login</button>
+                    </form>
+
+                    <div class="divider">
+                        <span>Or continue with</span>
+                    </div>
+
+                    <div class="social-buttons">
+                        <button class="btn-social google">
+                            <i class="fab fa-google"></i>
+                            Continue with Google
+                        </button>
+                        <button class="btn-social facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            Continue with Facebook
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Signup Form -->
+                <div class="tab-content" id="signup">
+                    <form class="auth-form" id="signupForm">
+                        <div class="form-group">
+                            <label for="signupName">Full Name</label>
+                            <div class="input-group">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="signupName" placeholder="Your full name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signupEmail">Email address</label>
+                            <div class="input-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="signupEmail" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signupPassword">Password</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="signupPassword" placeholder="Create a password" required>
+                                <button type="button" class="password-toggle" data-target="signupPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary full-width">Create Account</button>
+                    </form>
+
+                    <div class="divider">
+                        <span>Or continue with</span>
+                    </div>
+
+                    <div class="social-buttons">
+                        <button class="btn-social google">
+                            <i class="fab fa-google"></i>
+                            Continue with Google
+                        </button>
+                        <button class="btn-social facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            Continue with Facebook
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-    </div>
-  </div>
-</div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

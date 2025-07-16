@@ -1,106 +1,484 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pricing | SariSariStore</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-    .card {
-      border: 1px solid #dee2e6;
-    }
-    .card-header {
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans | SariSariStore</title>
+    <meta name="description" content="Choose the perfect pricing plan for your sari-sari store - Pay per transaction, monthly, or yearly plans available">
+    <link rel="stylesheet" href="pricing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-<!-- Navbar -->
-<nav class="navbar navbar-light bg-primary mb-4">
-  <div class="container-fluid">
-    <a class="navbar-brand text-light" href="index.html">
-      <i class="bi bi-arrow-left-circle"></i> Back to Home
-    </a>
-    <span class="navbar-text text-light">Pricing</span>
-  </div>
-</nav>
-
-<!-- Pricing Section -->
-<div class="container">
-  <div class="text-center mb-5">
-    <h2>Choose the Right Plan for Your Tindahan</h2>
-    <p class="text-muted">Affordable and flexible options for every sari-sari store.</p>
-  </div>
-
-  <div class="row g-4 justify-content-center">
-    <!-- Pay-per-transaction Plan -->
-    <div class="col-md-4">
-      <div class="card h-100">
-        <div class="card-header text-center bg-light">
-          <i class="bi bi-cash-coin fs-2 text-success"></i><br>
-          Pay Per Transaction
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-back">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+            <h1 class="nav-title">Pricing Plans</h1>
+            <div class="nav-actions">
+                <button class="btn-ghost" id="contactBtn">
+                    <i class="fas fa-phone"></i>
+                    Contact Sales
+                </button>
+            </div>
         </div>
-        <div class="card-body text-center">
-          <h3 class="text-success">₱1 - ₱2</h3>
-          <p class="text-muted">Per successful sale</p>
-          <ul class="list-unstyled mt-3 mb-4">
-            <li>✔ No monthly fee</li>
-            <li>✔ Ideal for low-volume stores</li>
-            <li>✔ Full POS access</li>
-          </ul>
-          <button class="btn btn-outline-success w-100">Use This Plan</button>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Choose the Perfect Plan for Your Tindahan</h1>
+                <p>Affordable and flexible pricing options designed specifically for Filipino sari-sari stores. Start small and grow with confidence.</p>
+                
+                <!-- Billing Toggle -->
+                <div class="billing-toggle">
+                    <span class="toggle-label">Monthly</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="billingToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">
+                        Yearly 
+                        <span class="save-badge">Save 20%</span>
+                    </span>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <!-- Pricing Cards -->
+        <div class="pricing-section">
+            <div class="pricing-grid">
+                <!-- Pay Per Transaction Plan -->
+                <div class="pricing-card starter" data-plan="transaction">
+                    <div class="card-header">
+                        <div class="plan-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h3>Pay Per Transaction</h3>
+                        <p class="plan-subtitle">Perfect for getting started</p>
+                    </div>
+                    
+                    <div class="card-pricing">
+                        <div class="price-display">
+                            <span class="currency">₱</span>
+                            <span class="amount">1-2</span>
+                            <span class="period">per sale</span>
+                        </div>
+                        <p class="price-note">No monthly commitment</p>
+                    </div>
+
+                    <div class="card-features">
+                        <h4>What's included:</h4>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> No monthly fees</li>
+                            <li><i class="fas fa-check"></i> Full POS system access</li>
+                            <li><i class="fas fa-check"></i> Basic inventory tracking</li>
+                            <li><i class="fas fa-check"></i> Sales reporting</li>
+                            <li><i class="fas fa-check"></i> Mobile & desktop app</li>
+                            <li><i class="fas fa-check"></i> Email support</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-footer">
+                        <button class="btn-plan btn-outline" data-plan="transaction">
+                            Start with Pay-Per-Use
+                        </button>
+                        <p class="plan-note">Ideal for stores with less than 50 transactions/month</p>
+                    </div>
+                </div>
+
+                <!-- Monthly Plan -->
+                <div class="pricing-card popular" data-plan="monthly">
+                    <div class="popular-badge">
+                        <i class="fas fa-star"></i>
+                        Most Popular
+                    </div>
+                    
+                    <div class="card-header">
+                        <div class="plan-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Monthly Plan</h3>
+                        <p class="plan-subtitle">Best for growing stores</p>
+                    </div>
+                    
+                    <div class="card-pricing">
+                        <div class="price-display">
+                            <span class="currency">₱</span>
+                            <span class="amount monthly-price">99</span>
+                            <span class="period">per month</span>
+                        </div>
+                        <p class="price-note yearly-note" style="display: none;">₱79/month when billed yearly</p>
+                    </div>
+
+                    <div class="card-features">
+                        <h4>Everything in Pay-Per-Use, plus:</h4>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Unlimited transactions</li>
+                            <li><i class="fas fa-check"></i> Advanced analytics & reports</li>
+                            <li><i class="fas fa-check"></i> Inventory alerts & automation</li>
+                            <li><i class="fas fa-check"></i> Customer management</li>
+                            <li><i class="fas fa-check"></i> Barcode scanning</li>
+                            <li><i class="fas fa-check"></i> Data backup & sync</li>
+                            <li><i class="fas fa-check"></i> Priority email support</li>
+                            <li><i class="fas fa-check"></i> Multi-device access</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-footer">
+                        <button class="btn-plan btn-primary" data-plan="monthly">
+                            Start Monthly Plan
+                        </button>
+                        <p class="plan-note">Perfect for stores with 50+ transactions/month</p>
+                    </div>
+                </div>
+
+                <!-- Yearly Plan -->
+                <div class="pricing-card premium" data-plan="yearly">
+                    <div class="card-header">
+                        <div class="plan-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>Yearly Plan</h3>
+                        <p class="plan-subtitle">Maximum value & features</p>
+                    </div>
+                    
+                    <div class="card-pricing">
+                        <div class="price-display">
+                            <span class="currency">₱</span>
+                            <span class="amount yearly-price">948</span>
+                            <span class="period">per year</span>
+                        </div>
+                        <div class="savings-badge">
+                            <i class="fas fa-piggy-bank"></i>
+                            Save ₱240 annually
+                        </div>
+                    </div>
+
+                    <div class="card-features">
+                        <h4>Everything in Monthly, plus:</h4>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> 2 months free (20% savings)</li>
+                            <li><i class="fas fa-check"></i> Priority phone support</li>
+                            <li><i class="fas fa-check"></i> Advanced business insights</li>
+                            <li><i class="fas fa-check"></i> Custom reports & exports</li>
+                            <li><i class="fas fa-check"></i> API access for integrations</li>
+                            <li><i class="fas fa-check"></i> White-label options</li>
+                            <li><i class="fas fa-check"></i> Dedicated account manager</li>
+                            <li><i class="fas fa-check"></i> Early access to new features</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-footer">
+                        <button class="btn-plan btn-premium" data-plan="yearly">
+                            Start Yearly Plan
+                        </button>
+                        <p class="plan-note">Best value for established stores</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="comparison-section">
+            <div class="section-header">
+                <h2>Compare All Plans</h2>
+                <p>See exactly what's included in each plan</p>
+            </div>
+
+            <div class="comparison-table-container">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th class="feature-column">Features</th>
+                            <th class="plan-column">Pay Per Transaction</th>
+                            <th class="plan-column popular-column">Monthly Plan</th>
+                            <th class="plan-column">Yearly Plan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="category-row">
+                            <td colspan="4"><strong>Core Features</strong></td>
+                        </tr>
+                        <tr>
+                            <td>POS System Access</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Inventory Management</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Sales Reporting</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Mobile & Desktop Apps</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr class="category-row">
+                            <td colspan="4"><strong>Advanced Features</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Unlimited Transactions</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Advanced Analytics</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Barcode Scanning</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Customer Management</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr class="category-row">
+                            <td colspan="4"><strong>Premium Features</strong></td>
+                        </tr>
+                        <tr>
+                            <td>API Access</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Custom Reports</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Phone Support</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Dedicated Account Manager</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Get answers to common questions about our pricing</p>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Can I switch plans anytime?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any billing differences.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Is there a free trial available?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 14-day free trial for all paid plans. No credit card required to start your trial.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What payment methods do you accept?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards, GCash, PayMaya, and bank transfers. All payments are processed securely.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Do you offer discounts for multiple stores?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer volume discounts for customers with multiple store locations. Contact our sales team for custom pricing.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What happens if I cancel my subscription?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can cancel anytime. Your account remains active until the end of your billing period, and you can export all your data.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Is my data secure and backed up?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We use enterprise-grade security and perform daily backups. Your data is encrypted and stored securely in the cloud.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Sari-Sari Store?</h2>
+                <p>Join thousands of Filipino entrepreneurs who have already upgraded their business with our POS system.</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary large" id="startTrialBtn">
+                        <i class="fas fa-rocket"></i>
+                        Start Free Trial
+                    </button>
+                    <button class="btn-outline large" id="scheduleDemoBtn">
+                        <i class="fas fa-calendar"></i>
+                        Schedule Demo
+                    </button>
+                </div>
+                <div class="cta-features">
+                    <div class="cta-feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>No Setup Fees</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-headset"></i>
+                        <span>24/7 Support</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Works Offline</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Monthly Subscription -->
-    <div class="col-md-4">
-      <div class="card h-100 border-primary">
-        <div class="card-header text-center bg-primary text-white">
-          <i class="bi bi-calendar-check fs-2"></i><br>
-          Monthly Plan
+    <!-- Plan Selection Modal -->
+    <div class="modal-overlay" id="planModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Choose Your Plan</h2>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="plan-summary" id="planSummary">
+                    <!-- Plan details will be populated by JavaScript -->
+                </div>
+                <form id="planForm" class="plan-form">
+                    <div class="form-section">
+                        <h3>Store Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="storeName">Store Name *</label>
+                                <input type="text" id="storeName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ownerName">Owner Name *</label>
+                                <input type="text" id="ownerName" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone Number *</label>
+                                <input type="tel" id="phoneNumber" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="emailAddress">Email Address *</label>
+                                <input type="email" id="emailAddress" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="storeAddress">Store Address</label>
+                            <textarea id="storeAddress" rows="2" placeholder="Complete store address"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Payment Information</h3>
+                        <div class="payment-methods">
+                            <label class="payment-method">
+                                <input type="radio" name="paymentMethod" value="gcash" checked>
+                                <div class="payment-option">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>GCash</span>
+                                </div>
+                            </label>
+                            <label class="payment-method">
+                                <input type="radio" name="paymentMethod" value="paymaya">
+                                <div class="payment-option">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>PayMaya</span>
+                                </div>
+                            </label>
+                            <label class="payment-method">
+                                <input type="radio" name="paymentMethod" value="card">
+                                <div class="payment-option">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>Credit Card</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelPlanBtn">Cancel</button>
+                        <button type="submit" class="btn-primary" id="confirmPlanBtn">
+                            <i class="fas fa-check"></i>
+                            Confirm Plan
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="card-body text-center">
-          <h3>₱99</h3>
-          <p class="text-muted">Per month</p>
-          <ul class="list-unstyled mt-3 mb-4">
-            <li>✔ Unlimited transactions</li>
-            <li>✔ Reports & Analytics</li>
-            <li>✔ Email support</li>
-          </ul>
-          <button class="btn btn-primary w-100">Subscribe Monthly</button>
-        </div>
-      </div>
     </div>
 
-    <!-- Yearly Subscription -->
-    <div class="col-md-4">
-      <div class="card h-100 border-dark">
-        <div class="card-header text-center bg-dark text-white">
-          <i class="bi bi-award fs-2"></i><br>
-          Yearly Plan
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Processing your request...</p>
         </div>
-        <div class="card-body text-center">
-          <h3>₱999</h3>
-          <p class="text-muted">Per year (save ₱189!)</p>
-          <ul class="list-unstyled mt-3 mb-4">
-            <li>✔ All monthly benefits</li>
-            <li>✔ Priority support</li>
-            <li>✔ Bonus features access</li>
-          </ul>
-          <button class="btn btn-dark w-100">Subscribe Yearly</button>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="pricing.js"></script>
 </body>
 </html>
